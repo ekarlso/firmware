@@ -1,10 +1,12 @@
 /**
  ******************************************************************************
- * @file    platforms.h
- * @authors Matthew McGowan, Brett Walach
- * @date    02 February 2015
+ * @file    inet_hal.c
+ * @author  Matthew McGowan
+ * @version V1.0.0
+ * @date    27-Sept-2014
+ * @brief
  ******************************************************************************
-  Copyright (c) 2015 Particle Industries, Inc.  All rights reserved.
+  Copyright (c) 2013-2015 Particle Industries, Inc.  All rights reserved.
 
   This library is free software; you can redistribute it and/or
   modify it under the terms of the GNU Lesser General Public
@@ -21,20 +23,18 @@
  ******************************************************************************
  */
 
-#ifndef PLATFORMS_H
-#define	PLATFORMS_H
 
-#define PLATFORM_SPARK_CORE                 0
-#define PLATFORM_SPARK_CORE_HD              2
-#define PLATFORM_GCC                        3
-#define PLATFORM_PHOTON_DEV                 4
-#define PLATFORM_TEACUP_PIGTAIL_DEV         5
-#define PLATFORM_PHOTON_PRODUCTION          6
-#define PLATFORM_TEACUP_PIGTAIL_PRODUCTION  7
-#define PLATFORM_P1                         8
-#define PLATFORM_ETHERNET_PROTO             9
-#define PLATFORM_ELECTRON_PRODUCTION        10
-#define PLATFORM_ESP8266                    11
+#include "inet_hal.h"
 
 
-#endif	/* PLATFORMS_H */
+int inet_gethostbyname(const char* hostname, uint16_t hostnameLen, HAL_IPAddress* out_ip_addr,
+        network_interface_t nif, void* reserved)
+{
+    return 1;
+}
+
+int inet_ping(const HAL_IPAddress* address, network_interface_t nif, uint8_t nTries,
+        void* reserved)
+{
+    return 0;
+}

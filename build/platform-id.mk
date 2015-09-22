@@ -60,6 +60,10 @@ ifeq ("$(PLATFORM)","electron")
 PLATFORM_ID=10
 endif
 
+ifeq ("$(PLATFORM)","esp8266")
+PLATFORM_ID=11
+endif
+
 ifeq ("$(PLATFORM)","newhal")
 PLATFORM_ID=60000
 endif
@@ -220,6 +224,23 @@ USBD_PID_DFU=0xD00A
 USBD_PID_CDC=0xC00A
 DEFAULT_PRODUCT_ID=10
 PLATFORM_DYNALIB_MODULES=electron
+endif
+
+ifeq ("$(PLATFORM_ID)","11")
+PLATFORM=esp8266
+# needed for conditional compilation of some stm32 specific files
+#STM32_DEVICE=lx106
+# used to define the sources in hal/src/new-hal
+PLATFORM_NAME=esp8266
+# define MCU-specific platform defines under platform/MCU/new-hal
+PLATFORM_MCU=lx106
+PLATFORM_NET=esp8266
+PRODUCT_DESC=ESP8266 with Xtensa LX106
+USBD_VID_SPARK=0x1D50
+USBD_PID_DFU=0x607F
+USBD_PID_CDC=0x607D
+DEFAULT_PRODUCT_ID=11
+ARCH=xtensa
 endif
 
 ifeq ("$(PLATFORM_ID)","60000")

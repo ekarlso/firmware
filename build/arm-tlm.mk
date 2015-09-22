@@ -11,6 +11,10 @@ else
 ifeq ("$(ARCH)","gcc")
 include $(current_dir)/gcc-tools.mk
 else
+ifeq ("$(ARCH)","xtensa")
+include $(current_dir)/xtensa-tools.mk
+else
 $(error "Unknown architecture '$(ARCH)'");
+endif
 endif
 endif
